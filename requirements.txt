@@ -1,0 +1,6 @@
+PyYAML
+slugify
+requests
+jinja2
+humanize
+beautifulsoup4

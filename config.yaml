@@ -1,0 +1,20 @@
+# Przykładowy config.yaml.
+ranking_url: https://sio2.staszic.waw.pl/c/fpremoi2019/r/466/
+contest_name: Finałowy PreMOI
+credits:
+  Organizator:
+    - pan Daniel Olkowski
+    - pani Joanna Śmigielska
+  Kadra:
+    - Szymon K.
+    - Alicja K.
+    - Dominik W.
+    - Kuba B.
+    - Jonasz A.
+    - Mikołaj B.
+    - Paweł P.
+preamble: |
+  Szczególne podziękowania dla Szymona za to, że nie przypomina mi, <br>
+  że miałem mu pomóc z SIO2.
+lang: pl
+font: Georgia

@@ -1,0 +1,137 @@
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ contest_name }}</title>
+    <style>
+        {{ copied_css }}
+    </style>
+    {{ syntax_style }}
+    <style>
+        body {
+            padding: 0;
+        }
+
+        .stylized {
+            font-family: {{ font }};
+        }
+
+        .monospaced {
+            font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+        }
+
+        .column {
+            max-width: 68em;
+            padding: 1em 2em;
+            margin: auto;
+        }
+
+        .dark {
+            text-align: center;
+            min-height: 100vh;
+            background-color: #000;
+        }
+
+        .dark, .credits td {
+            font-size: 3rem;
+            color: #eee;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 6rem;
+        }
+
+        .credits td {
+            vertical-align: top;
+            padding: 1em;
+            width: 33em;
+            text-align: left;
+        }
+
+        .credits td:first-of-type {
+            text-align: right;
+        }
+
+        h2 {
+            margin-top: 8rem;
+            font-size: 4rem;
+        }
+
+        h3 {
+            margin-top: 6rem;
+            font-size: 3rem;
+        }
+
+        pre {
+            overflow: hidden;
+            margin: 4rem 0;
+        }
+
+        .syntax-highlight * {
+            font-size: 0.8rem;
+            line-height: 0.9em;
+        }
+
+        .syntax-highlight .ch, .syntax-highlight .c1, .syntax-highlight .cs, .syntax-highlight .cm {
+            font-style: normal;
+            font-size: 2rem;
+            display: inline-block;
+            line-height: 1em;
+        }
+
+        .table-report .group-score {
+            vertical-align: bottom;
+        }
+
+        .points {
+            font-size: 2rem;
+            margin: 3rem 0.5rem;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div class="dark stylized">
+    <div class="column">
+        <h1>{{ contest_name }}</h1>
+
+        {% if credits %}
+            <table class="credits">
+                {% for key, lines in credits.items() %}
+                    <tr>
+                        <td>{{ key }}</td>
+                        <td>
+                            {% for line in lines %}
+                                <p>{{ line }}</p>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+        {{ preamble }}
+    </div>
+</div>
+
+<div class="column">
+    {% for user_submission in user_submissions %}
+        <h2 class="stylized">{{ user_submission.name }}</h2>
+
+        {% for submission in user_submission.submissions %}
+            <h3 class="monospaced">{{ submission.task_id | upper }}</h3>
+
+            {{ submission.code_html }}
+            {{ submission.table_html }}
+            <div class="points">
+                {{ submission.points }}/100
+            </div>
+        {% endfor %}
+
+    {% endfor %}
+</div>
+</body>
+</html>
